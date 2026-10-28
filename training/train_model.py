@@ -31,7 +31,7 @@ CLASSES = [
 
 NUM_CLASSES = len(CLASSES)
 
-EPOCHS = 15
+EPOCHS = 20
 
 BATCH_SIZE = 32
 
@@ -110,7 +110,20 @@ def load_dataset():
 
 def build_model():
 
+    data_augmentation = tf.keras.Sequential([
+        tf.keras.layers.RandomRotation(0.08),
+        tf.keras.layers.RandomZoom(0.10),
+        tf.keras.layers.RandomTranslation(
+            0.10,
+            0.10
+        )
+    ])
+
+
     model = tf.keras.Sequential([
+
+        # Data augmentation
+        data_augmentation,
 
         # First convolution
         tf.keras.layers.Conv2D(
@@ -153,7 +166,7 @@ def build_model():
         ),
 
 
-        # Convert feature maps to vector
+        # Flatten
         tf.keras.layers.Flatten(),
 
 
@@ -163,13 +176,12 @@ def build_model():
             activation="relu"
         ),
 
-        # Prevent overfitting
         tf.keras.layers.Dropout(
             0.3
         ),
 
 
-        # Output layer
+        # Output
         tf.keras.layers.Dense(
             NUM_CLASSES,
             activation="softmax"
@@ -178,16 +190,13 @@ def build_model():
 
 
     model.compile(
-
         optimizer="adam",
-
         loss="sparse_categorical_crossentropy",
-
         metrics=["accuracy"]
     )
 
-    return model
 
+    return model
 
 # =========================================
 # Main Training

@@ -45,3 +45,20 @@ class HandTracker:
         )
 
         return frame, result
+
+    def get_index_finger(self, result, frame):
+
+        if result.hand_landmarks:
+
+            hand = result.hand_landmarks[0]
+
+            index_tip = hand[8]
+
+            h, w, _ = frame.shape
+
+            x = int(index_tip.x * w)
+            y = int(index_tip.y * h)
+
+            return x, y
+
+        return None

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b14" />
+  <title>AirCanvas AI | Draw Beyond Limits</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">✳</span>
+      AirCanvas <span class="ai">AI</span>
+    </a>
+    <span class="live-status"><span class="dot"></span> HAND-TRACKING CANVAS</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <span class="eyebrow">YOUR HANDS. YOUR IMAGINATION.</span>
+      <h1>Draw beyond<br />the <span>ordinary.</span></h1>
+      <p>Turn hand gestures into digital art. No mouse, no touch — just you and your creativity.</p>
+      <div class="feature-pills">
+        <span>✳ AI-powered</span>
+        <span>◎ Real-time tracking</span>
+        <span>↗ Hands-free drawing</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-head">
+        <div>
+          <h2>Your creative space</h2>
+          <p>Raise your index finger to draw; lower it to stop.</p>
+        </div>
+        <span id="status" class="status">Camera off</span>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="drawingCanvas" width="960" height="600"></canvas>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✳</div>
+          <h3>Your canvas awaits</h3>
+          <p>Start your camera and let your hands do the drawing.</p>
+        </div>
+        <div class="canvas-label">AIR CANVAS <span>•</span> FREE DRAW</div>
+      </div>
+
+      <div class="toolbar">
+        <div class="tool-group">
+          <label for="colorPicker">Brush color</label>
+          <input id="colorPicker" type="color" value="#8b7bff" />
+        </div>
+        <div class="tool-group brush-control">
+          <label for="brushSize">Brush size <span id="brushValue">6 px</span></label>
+          <input id="brushSize" type="range" min="2" max="24" value="6" />
+        </div>
+        <button id="eraseBtn" class="tool-btn">⌫ Eraser</button>
+        <button id="undoBtn" class="tool-btn">↶ Undo</button>
+        <button id="clearBtn" class="tool-btn">Clear</button>
+        <button id="saveBtn" class="tool-btn">↓ Save art</button>
+      </div>
+
+      <div class="camera-panel">
+        <div class="camera-copy">
+          <div class="camera-icon">◉</div>
+          <div>
+            <h3>Hand tracking</h3>
+            <p id="cameraMessage">Allow camera access to begin.</p>
+          </div>
+        </div>
+        <video id="webcam" autoplay playsinline muted></video>
+        <button id="cameraBtn" class="primary-btn">Start camera ↗</button>
+      </div>
+      <p id="errorMessage" class="error-message" role="status"></p>
+    </section>
+
+    <section class="how-it-works">
+      <h2>Made for your flow.</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Start</h3><p>Enable your webcam and show your hand.</p></article>
+        <article><span>02</span><h3>Draw</h3><p>Raise your index finger and move to sketch.</p></article>
+        <article><span>03</span><h3>Save</h3><p>Download your artwork when you're done.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>Built with creativity & AI · AirCanvas AI</footer>
+</body>
+</html>

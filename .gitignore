@@ -25,5 +25,3 @@ dataset/
 # Local Python environments
 .venv-tfjs/
 
-# Browser version (keep local for now)
-web/
